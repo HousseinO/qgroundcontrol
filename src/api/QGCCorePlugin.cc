@@ -91,6 +91,7 @@ public:
     QmlComponentInfo* pQmlTest                  = nullptr;
 #endif
     QmlComponentInfo* pRemoteID                  = nullptr;
+    QmlComponentInfo*   flirWidgetInfo          = nullptr;
 
     QGCOptions*         defaultOptions          = nullptr;
     QVariantList        settingsList;
@@ -139,6 +140,7 @@ QVariantList &QGCCorePlugin::settingsPages()
                                                 QUrl::fromUserInput("qrc:/qml/OfflineMap.qml"),
                                                 QUrl::fromUserInput("qrc:/res/waves.svg"));
         _p->settingsList.append(QVariant::fromValue(reinterpret_cast<QmlComponentInfo*>(_p->pOfflineMaps)));
+        _p->settingsList.append(QVariant::fromValue(new QmlComponentInfo(tr("Pilgrim"),  QUrl::fromUserInput("qrc:/qml/FlirWidget.qml"))));
 #if defined(QGC_GST_TAISYNC_ENABLED)
         _p->pTaisync = new QmlComponentInfo(tr("Taisync"),
                                             QUrl::fromUserInput("qrc:/qml/TaisyncSettings.qml"),
